@@ -1,0 +1,57 @@
+Из отдела 1
+
+В отдел 2:
+ Name: abg, Surname: abv, Salary: 200;
+В отдел 3:
+В отдел 4:
+В отдел 5:
+
+
+Из отдела 2
+
+В отдел 1:
+В отдел 3:
+В отдел 4:
+В отдел 5:
+
+
+Из отдела 3
+
+В отдел 1:
+ Name: abb, Surname: abv, Salary: 600;
+В отдел 2:
+ Name: abb, Surname: abv, Salary: 600;
+В отдел 4:
+ Name: abb, Surname: abv, Salary: 600;
+В отдел 5:
+ Name: abb, Surname: abv, Salary: 600;
+
+
+Из отдела 4
+
+В отдел 1:
+ Name: abd, Surname: abv, Salary: 500; Name: abe, Surname: abv, Salary: 100;
+ Name: abd, Surname: abv, Salary: 500; Name: abe, Surname: abv, Salary: 100; Name: abe, Surname: abv, Salary: 700;
+ Name: abe, Surname: abv, Salary: 100; Name: abe, Surname: abv, Salary: 700;
+ Name: abd, Surname: abv, Salary: 500; Name: abe, Surname: abv, Salary: 100; Name: abf, Surname: abv, Salary: 600;
+ Name: abe, Surname: abv, Salary: 100; Name: abf, Surname: abv, Salary: 600;
+ Name: abe, Surname: abv, Salary: 100; Name: abe, Surname: abv, Salary: 700; Name: abf, Surname: abv, Salary: 600;
+В отдел 2:
+ Name: abd, Surname: abv, Salary: 500; Name: abe, Surname: abv, Salary: 100;
+ Name: abd, Surname: abv, Salary: 500; Name: abe, Surname: abv, Salary: 100; Name: abe, Surname: abv, Salary: 700;
+ Name: abe, Surname: abv, Salary: 100; Name: abe, Surname: abv, Salary: 700;
+ Name: abd, Surname: abv, Salary: 500; Name: abe, Surname: abv, Salary: 100; Name: abf, Surname: abv, Salary: 600;
+ Name: abe, Surname: abv, Salary: 100; Name: abf, Surname: abv, Salary: 600;
+ Name: abe, Surname: abv, Salary: 100; Name: abe, Surname: abv, Salary: 700; Name: abf, Surname: abv, Salary: 600;
+В отдел 3:
+В отдел 5:
+
+
+Из отдела 5
+
+В отдел 1:
+В отдел 2:
+В отдел 3:
+В отдел 4:
+
+

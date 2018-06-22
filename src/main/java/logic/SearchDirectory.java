@@ -5,27 +5,31 @@ import java.util.List;
 
 public class SearchDirectory implements Runnable {
 
+    private ExecutorData data;
     private File directory;
 
-    public SearchDirectory(File directory) {
+    public SearchDirectory(ExecutorData data, File directory) {
+        this.data = data;
         this.directory = directory;
     }
 
     public void run() {
         File[] directoryEntries = directory.listFiles();
-        for (File entry : directoryEntries) {
-            if (entry.isDirectory()) {
-                ExecutorLogic.getExecutor().execute(new SearchDirectory(entry));
-            }
-            List<String> list = ExecutorLogic.getExtension();
-            boolean i = false;
-            for (String e : list) {
-                if (entry.getName().endsWith(e)) {
-                    i = true;
+        if (directoryEntries != null) {
+            for (File entry : directoryEntries) {
+                if (entry.isDirectory()) {
+                    data.getExecutor().execute(new SearchDirectory(data, entry));
                 }
-            }
-            if (i) {
-                ExecutorLogic.getExecutor().execute(new SearchLine(entry));
+                List<String> list = data.getExtension();
+                boolean conformity = false;
+                for (String e : list) {
+                    if (entry.getName().endsWith(e)) {
+                        conformity = true;
+                    }
+                }
+                if (conformity) {
+                    data.getExecutor().execute(new SearchLine(data, entry));
+                }
             }
         }
 

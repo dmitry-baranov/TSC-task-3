@@ -19,6 +19,7 @@ public class ExecutorData {
     public ExecutorData(String threads, String line, String expansion, String result) {
         try {
             this.executor = Executors.newFixedThreadPool(Integer.parseInt(threads));
+//            this.executor = new ForkJoinPool(Integer.parseInt(threads));
             this.line = line;
             String[] s = expansion.split(";");
             this.extension = Arrays.asList(s);

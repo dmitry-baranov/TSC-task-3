@@ -19,17 +19,19 @@ public class SearchDirectory implements Runnable {
             for (File entry : directoryEntries) {
                 if (entry.isDirectory()) {
                     data.getExecutor().execute(new SearchDirectory(data, entry));
-                }
-                List<String> list = data.getExtension();
-                boolean conformity = false;
-                for (String e : list) {
-                    if (entry.getName().endsWith(e)) {
-                        conformity = true;
+                } else {
+                    List<String> list = data.getExtension();
+                    boolean conformity = false;
+                    for (String e : list) {
+                        if (entry.getName().endsWith(e)) {
+                            conformity = true;
+                        }
+                    }
+                    if (conformity) {
+                        data.getExecutor().execute(new SearchLine(data, entry));
                     }
                 }
-                if (conformity) {
-                    data.getExecutor().execute(new SearchLine(data, entry));
-                }
+
             }
         }
 

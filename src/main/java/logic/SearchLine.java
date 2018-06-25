@@ -21,16 +21,17 @@ public class SearchLine implements Runnable {
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
-                if (sCurrentLine.contains(data.getLine())) {
-                    PrintWriter writer;
+                if (sCurrentLine.toLowerCase().contains(data.getLine().toLowerCase())) {
+                    FileWriter writer;
                     try {
-                        writer = new PrintWriter(data.getResult(), "UTF-8");
+                        writer = new FileWriter(data.getResult(), true);
                     } catch (FileNotFoundException e) {
                         throw new MyException(Response.RESULT_FILE_NOT_FOUND);
                     } catch (UnsupportedEncodingException e) {
                         throw new MyException(Response.UNSUPPORTED_ENCODING_EXCEPTION);
                     }
-                    writer.println(Thread.currentThread().getId() + file.getName() + sCurrentLine);
+                    writer.write(Thread.currentThread().getId() + "\t" + file.getName() + "\t" + sCurrentLine  + "\n");
+                    writer.flush();
                 }
             }
         } catch (NumberFormatException e) {

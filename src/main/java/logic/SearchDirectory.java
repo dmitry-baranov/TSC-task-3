@@ -1,7 +1,6 @@
 package logic;
 
 import java.io.File;
-import java.util.List;
 
 public class SearchDirectory implements Runnable {
 
@@ -20,14 +19,9 @@ public class SearchDirectory implements Runnable {
                 if (entry.isDirectory()) {
                     data.getExecutor().execute(new SearchDirectory(data, entry));
                 } else {
-                    List<String> list = data.getExtension();
-                    boolean conformity = false;
-                    for (String e : list) {
-                        if (entry.getName().endsWith(e)) {
-                            conformity = true;
-                        }
-                    }
-                    if (conformity) {
+                    String nameFile = entry.getName();
+                    int index = nameFile.indexOf(".");
+                    if (data.getExtension().contains(nameFile.substring(index))) {
                         data.getExecutor().execute(new SearchLine(data, entry));
                     }
                 }

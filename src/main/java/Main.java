@@ -1,5 +1,6 @@
 import errors.MyException;
 import logic.ExecutorData;
+import logic.InverseSemaphore;
 import logic.SearchDirectory;
 
 
@@ -8,10 +9,13 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) {
         try {
-            ExecutorData executorData = new ExecutorData(args[0], args[1], args[3], args[4]);
+            InverseSemaphore inverseSemaphore = new InverseSemaphore();
+            ExecutorData executorData = new ExecutorData(args[0], args[1], args[3], args[4], inverseSemaphore);
+            inverseSemaphore.beforeSubmit();
             executorData.getExecutor().execute(new SearchDirectory(executorData, new File(args[2])));
-            System.out.println(Thread.currentThread().getName());
-            Thread.sleep(5000);
+//            System.out.println(Thread.currentThread().getName());
+            Thread.sleep(100);
+            inverseSemaphore.awaitCompletion();
             executorData.getExecutor().shutdown();
         }
         catch (InterruptedException e) {

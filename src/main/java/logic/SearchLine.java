@@ -40,6 +40,8 @@ public class SearchLine implements Runnable {
             throw new MyException(Response.INVALID_INPUT_DATA);
         } catch (IOException e) {
             throw new MyException(Response.FILE_NOT_FOUND);
+        }finally {
+            data.getInverseSemaphore().taskCompleted();
         }
     }
 }

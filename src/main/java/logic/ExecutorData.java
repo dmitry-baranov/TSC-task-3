@@ -16,10 +16,12 @@ public class ExecutorData {
     private String line;
     private Set<String> extension = new HashSet<>();
     private File result;
+    private InverseSemaphore inverseSemaphore;
 
-    public ExecutorData(String threads, String line, String expansion, String result) {
+    public ExecutorData(String threads, String line, String expansion, String result, InverseSemaphore inverseSemaphore) {
         try {
             this.executor = Executors.newFixedThreadPool(Integer.parseInt(threads));
+            this.inverseSemaphore = inverseSemaphore;
 //            this.executor = new ForkJoinPool(Integer.parseInt(threads));
             this.line = line;
             String[] s = expansion.split(";");
@@ -37,17 +39,6 @@ public class ExecutorData {
         }
     }
 
-    public synchronized void synch() {
-        if (Thread.currentThread().getName().equals("main")) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        notify();
-    }
-
     public String getLine() {
         return line;
     }
@@ -62,5 +53,9 @@ public class ExecutorData {
 
     public File getResult() {
         return result;
+    }
+
+    public InverseSemaphore getInverseSemaphore() {
+        return inverseSemaphore;
     }
 }

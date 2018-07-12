@@ -23,7 +23,6 @@ public class SearchDirectory implements Runnable {
                     } else {
                         String nameFile = entry.getName();
                         int index = nameFile.indexOf(".");
-                        System.out.println(nameFile.substring(index));
                         if (data.getExtension().contains(nameFile.substring(index+1))) {
                             data.getInverseSemaphore().beforeSubmit();
                             data.getExecutor().execute(new SearchLine(data, entry));

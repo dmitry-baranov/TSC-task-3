@@ -22,7 +22,6 @@ public class ExecutorData {
         try {
             this.executor = Executors.newFixedThreadPool(Integer.parseInt(threads));
             this.inverseSemaphore = inverseSemaphore;
-//            this.executor = new ForkJoinPool(Integer.parseInt(threads));
             this.line = line;
             String[] s = expansion.split(";");
             if (s.length != 0) {
